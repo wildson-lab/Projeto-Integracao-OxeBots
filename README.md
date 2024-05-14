@@ -1,4 +1,4 @@
-#Descrição
+# Descrição
 Este projeto consiste em um sistema de iluminação inteligente, que realiza o monitoramento de tensão, corrente e temperatura em dois postes, e envia estes parâmetros para uma central de controle.
 
 # Instruções de uso
