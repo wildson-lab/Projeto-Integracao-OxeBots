@@ -7,6 +7,7 @@ e envio dos dados para um Concentrador.
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
+#include <ArduinoJson.h>
 
 // Endereçamento de pinos
 #define PINO_SENSOR_TENSAO A0
@@ -138,11 +139,17 @@ void mostra_dados(){
 
 /// @brief Envia os dados obtidos dos sensores por serial
 void envia_dados(){
-  Serial.print(tensao);  
-  Serial.print(", ");
-  Serial.print(corrente);
-  Serial.print(", ");
-  Serial.print(temperatura);
-  Serial.print(", ");
-  Serial.println(estado_foto);
+  // Serial.print(tensao);  
+  // Serial.print(", ");
+  // Serial.print(corrente);
+  // Serial.print(", ");
+  // Serial.print(temperatura);
+  // Serial.print(", ");
+  // Serial.println(estado_foto);
+  StaticJsonDocument<200> doc;
+  doc["tensao"] = tensao;
+  doc["corr"] = corrente;
+  doc["temp"] = temperatura;
+  doc["foto"] = estado_foto;
+  serializeJson(doc, Serial);
 }
